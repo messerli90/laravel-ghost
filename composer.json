@@ -1,21 +1,22 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "messerli90/laravel-ghost",
+    "description": "Laravel wrapper for the Ghost blogging API",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "messerli90",
+        "laravel-ghost"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/messerli90/laravel-ghost",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Michael Messerli",
+            "email": "michaelamesserli@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.4|^8.0",
+        "illuminate/http": "^7.0|^8.0",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.0"
     },
@@ -25,17 +26,18 @@
         "orchestra/testbench": "^6.15",
         "phpunit/phpunit": "^9.3",
         "spatie/laravel-ray": "^1.9",
-        "vimeo/psalm": "^4.4"
+        "vimeo/psalm": "^4.4",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Messerli90\\Ghost\\": "src",
+            "Messerli90\\Ghost\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Messerli90\\Ghost\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Messerli90\\Ghost\\GhostServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Ghost": "Messerli90\\Ghost\\GhostFacade"
             }
         }
     },

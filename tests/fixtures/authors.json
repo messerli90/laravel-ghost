@@ -1,0 +1,119 @@
+{
+    "authors": [
+        {
+            "id": "5979a779df093500228e9590",
+            "name": "Abraham Lincoln",
+            "slug": "abe",
+            "profile_image": "https://demo.ghost.io/content/images/2018/10/abe.jpg",
+            "cover_image": null,
+            "bio": "I was the 16th president of the USA until I was assassinated in April of 1963.  I led the US through its Civil War - its bloodiest and greatest moral, constitutional and political crisis.",
+            "website": null,
+            "location": "Kentucky, USA",
+            "facebook": null,
+            "twitter": null,
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/abe/"
+        },
+        {
+            "id": "5c9a4da453c79000bf19a6f5",
+            "name": "Cameron Almeida",
+            "slug": "cameron",
+            "profile_image": "https://demo.ghost.io/content/images/2019/03/1c2f492a-a5d0-4d2d-b350-cdcdebc7e413.jpg",
+            "cover_image": null,
+            "bio": "Editor at large.",
+            "website": "https://example.com",
+            "location": "Cape Town",
+            "facebook": "example",
+            "twitter": "@example",
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/cameron/"
+        },
+        {
+            "id": "5979a779df093500228e958f",
+            "name": "Edgar Rice Burroughs",
+            "slug": "edgar",
+            "profile_image": "https://demo.ghost.io/content/images/2018/10/edgar.jpg",
+            "cover_image": "https://demo.ghost.io/content/images/2018/08/Screenshot-2018-08-23-14.08.38.png",
+            "bio": "I'm an American novelist, best known for my work writing about a brave jungle hero called Tarzan and his muse, Jane.",
+            "website": null,
+            "location": "Chicago, Illinois",
+            "facebook": null,
+            "twitter": null,
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/edgar/"
+        },
+        {
+            "id": "5951f5fca366002ebd5dbef7",
+            "name": "Ghost",
+            "slug": "ghost",
+            "profile_image": "//www.gravatar.com/avatar/2bfa103a13c88b5ffd26da6f982f11df?s=250&d=mm&r=x",
+            "cover_image": null,
+            "bio": "The professional publishing platform",
+            "website": "https://ghost.org",
+            "location": null,
+            "facebook": "ghost",
+            "twitter": "@tryghost",
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/ghost/"
+        },
+        {
+            "id": "1",
+            "name": "John O'Nolan",
+            "slug": "john",
+            "profile_image": "https://demo.ghost.io/content/images/2018/10/j8.jpg",
+            "cover_image": null,
+            "bio": "Founder at Ghost.org. Writes about open source, startup life, non-profits, and publishing platforms. Travels the world with a bag of kites.",
+            "website": "http://john.onolan.org",
+            "location": "On a plane",
+            "facebook": null,
+            "twitter": null,
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/john/"
+        },
+        {
+            "id": "5979a779df093500228e958e",
+            "name": "Lewis Carroll",
+            "slug": "lewis",
+            "profile_image": "https://demo.ghost.io/content/images/2014/09/lewis.jpeg",
+            "cover_image": null,
+            "bio": "My real name is Charles Lutwidge Dodgson, but people call me Lewis. I'm an English writer, mathematician, logician, Anglican deacon and photographer. People know me best for writing about Alice.",
+            "website": null,
+            "location": "Cheshire, England",
+            "facebook": null,
+            "twitter": null,
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/lewis/"
+        },
+        {
+            "id": "5979a779df093500228e958d",
+            "name": "Martin Luther King",
+            "slug": "martin",
+            "profile_image": "https://demo.ghost.io/content/images/2018/10/mlk.jpg",
+            "cover_image": null,
+            "bio": "An American pastor, activist, humanitarian. People know me for leading the African-American Civil Rights movement using nonviolent civil disobedience.",
+            "website": null,
+            "location": "Memphis, Tennessee",
+            "facebook": null,
+            "twitter": null,
+            "meta_title": null,
+            "meta_description": null,
+            "url": "https://demo.ghost.io/author/martin/"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "page": 1,
+            "limit": 15,
+            "pages": 1,
+            "total": 11,
+            "next": null,
+            "prev": null
+        }
+    }
+}

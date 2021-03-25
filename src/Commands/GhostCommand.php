@@ -1,12 +1,13 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Messerli90\Ghost\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class GhostCommand extends Command
 {
-    public $signature = 'skeleton';
+    //TODO: Could add a "update cache" command
+    public $signature = 'laravel-ghost';
 
     public $description = 'My command';
 
