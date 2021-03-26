@@ -3,9 +3,7 @@
 namespace Messerli90\Ghost;
 
 use Illuminate\Support\ServiceProvider;
-use Messerli90\Ghost\Commands\GhostCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Messerli90\Ghost\Commands\GhostCache;
 
 class GhostServiceProvider extends ServiceProvider
 {
@@ -19,6 +17,9 @@ class GhostServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/ghost.php' => config_path('ghost.php'),
             ], 'config');
+            $this->commands([
+                GhostCache::class
+            ]);
         }
     }
 
@@ -37,7 +38,7 @@ class GhostServiceProvider extends ServiceProvider
 
     protected function getConfig()
     {
-//        throw_if(!file_exists(config_path('ghost.php')), );
+        //        throw_if(!file_exists(config_path('ghost.php')), );
 
         $key = config('ghost.key');
         $domain = config('ghost.admin_domain');

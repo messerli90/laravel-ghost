@@ -6,20 +6,20 @@ use Illuminate\Support\Facades\Http;
 
 class Ghost
 {
-    public $resource = "posts";
-    public $resourceId;
-    public $resourceSlug;
-    public $includes;
-    public $fields;
-    public $formats;
-    public $limit;
-    public $page;
-    public $order;
+    public string $resource = "posts";
+    public string $resourceId = "";
+    public string $resourceSlug = "";
+    public string $includes = "";
+    public string $fields = "";
+    public string $formats = "";
+    public string $limit = "";
+    public string $page = "";
+    public string $order = "";
     private string $key;
     private string $domain;
     private string $version;
 
-    public function __construct($key, $domain, $version)
+    public function __construct(string $key, string $domain, string $version)
     {
         $this->key = $key;
         $this->domain = $domain;
@@ -50,9 +50,9 @@ class Ghost
     protected function buildEndpoint(): string
     {
         $endpoint = $this->resource;
-        if (isset($this->resourceId)) {
+        if (!empty($this->resourceId)) {
             $endpoint .= "/{$this->resourceId}";
-        } elseif (isset($this->resourceSlug)) {
+        } elseif (!empty($this->resourceSlug)) {
             $endpoint .= "/slug/{$this->resourceSlug}";
         }
 
@@ -63,12 +63,12 @@ class Ghost
     {
         $params = [
             'key' => $this->key,
-            'include' => $this->includes ?? null,
-            'fields' => $this->fields ?? null,
-            'formats' => $this->formats ?? null,
-            'limit' => $this->limit ?? null,
-            'page' => $this->page ?? null,
-            'order' => $this->order ?? null
+            'include' => $this->includes ?: null,
+            'fields' => $this->fields ?: null,
+            'formats' => $this->formats ?: null,
+            'limit' => $this->limit ?: null,
+            'page' => $this->page ?: null,
+            'order' => $this->order ?: null
         ];
 
         return http_build_query($params);
@@ -77,13 +77,49 @@ class Ghost
     /**
      * Limit how many records are returned at once
      *
-     * @param $limit
+     * @param int|string $limit
      *
      * @return $this
      */
     public function limit($limit): Ghost
     {
-        $this->limit = $limit;
+        $this->limit = strval($limit);
+        return $this;
+    }
+
+    public function setResource(string $resource): Ghost
+    {
+        $this->resource = $resource;
+        return $this;
+    }
+
+    public function posts(): Ghost
+    {
+        $this->resource = 'posts';
+        return $this;
+    }
+
+    public function authors(): Ghost
+    {
+        $this->resource = 'authors';
+        return $this;
+    }
+
+    public function tags(): Ghost
+    {
+        $this->resource = 'tags';
+        return $this;
+    }
+
+    public function pages(): Ghost
+    {
+        $this->resource = 'pages';
+        return $this;
+    }
+
+    public function settings(): Ghost
+    {
+        $this->resource = 'settings';
         return $this;
     }
 
@@ -158,7 +194,7 @@ class Ghost
 
     public function page(int $page): Ghost
     {
-        $this->page = $page;
+        $this->page = strval($page);
         return $this;
     }
 

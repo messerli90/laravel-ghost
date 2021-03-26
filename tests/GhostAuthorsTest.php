@@ -3,27 +3,22 @@
 namespace Messerli90\Ghost\Tests;
 
 use Illuminate\Support\Facades\Http;
+use Messerli90\Ghost\Facades\Ghost;
 use Messerli90\Ghost\GhostAuthors;
 
 class GhostAuthorsTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        Http::fake(fn() => Http::response(file_get_contents(__DIR__ . '/fixtures/authors.json')));
-    }
-
     /** @test */
     public function it_sets_resource_to_authors()
     {
-        $ghost = new GhostAuthors;
+        $ghost = Ghost::authors();
         $this->assertEquals('authors', $ghost->resource);
     }
 
     /** @test */
     public function it_gets_all_authors()
     {
-        $response = (new GhostAuthors())->all();
+        $response = Ghost::authors()->get();
 
         $this->assertArrayHasKey('authors', $response);
         $this->assertArrayHasKey('meta', $response);

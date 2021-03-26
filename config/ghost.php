@@ -11,14 +11,37 @@ return [
 
     /**
      * Your admin domain can be different to your main domain.
-     * All Ghost(Pro) blogs have a `.ghost.io`
-     * domain as their admin domain and require https.
+     * All Ghost(Pro) blogs have a `.ghost.io` domain
+     * as their admin domain and require https.
      */
     'admin_domain' => env('GHOST_ADMIN_DOMAIN', "https://{admin_domain}"),
 
     /**
-     * The Content API URL and key can be obtained by creating a
-     * new Custom Integration under the Integrations screen in Ghost Admin.
+     * The Content API URL and key can be obtained by creating a new
+     * Custom Integration under the Integrations screen in Ghost Admin.
      */
-    'key' => env('GHOST_API_KEY', '22444f78447824223cefc48062')
+    'key' => env('GHOST_API_KEY', '22444f78447824223cefc48062'),
+
+    /**
+     * Optionally, cache records when they are returned.
+     */
+    'cache' => [
+        /**
+         * Cache returned records
+         * Set to false if you want to handle caching yourself
+         */
+        'cache_records' => false,
+
+        /**
+         * Prefix key used to save to cache
+         * Ex. ghost_posts
+         */
+        'cache_prefix' => 'ghost_',
+
+        /**
+         * How long until cache expires
+         * Accepts int in seconds, or DateTime instance
+         */
+        'ttl' => 60 * 60,
+    ]
 ];

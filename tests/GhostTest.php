@@ -84,6 +84,13 @@ class GhostTest extends TestCase
     }
 
     /** @test */
+    public function it_explicitly_sets_resource()
+    {
+        $ghost = Ghost::setResource('tags');
+        $this->assertEquals('tags', $ghost->resource);
+    }
+
+    /** @test */
     public function it_can_chain_filters()
     {
         $ghost = Ghost::with('authors', 'tags')

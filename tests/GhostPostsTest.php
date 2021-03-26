@@ -2,28 +2,22 @@
 
 namespace Messerli90\Ghost\Tests;
 
-use Illuminate\Support\Facades\Http;
-use Messerli90\Ghost\GhostPosts;
+use Messerli90\Ghost\Facades\Ghost;
 
 class GhostPostsTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        Http::fake(fn() => Http::response(file_get_contents(__DIR__ . '/fixtures/posts.json')));
-    }
 
     /** @test */
     public function it_sets_resource_to_posts()
     {
-        $ghost = new GhostPosts;
+        $ghost = Ghost::posts();
         $this->assertEquals('posts', $ghost->resource);
     }
 
     /** @test */
     public function it_gets_all_posts()
     {
-        $response = (new GhostPosts())->all();
+        $response = Ghost::posts()->all();
 
         $this->assertArrayHasKey('posts', $response);
         $this->assertArrayHasKey('meta', $response);
@@ -34,7 +28,7 @@ class GhostPostsTest extends TestCase
     /** @test */
     public function it_handles_filters()
     {
-        $ghost = (new GhostPosts())->page(4)->fields('authors', 'tags');
+        $ghost = Ghost::posts()->page(4)->fields('authors', 'tags');
 
         $this->assertEquals($ghost->fields, 'authors,tags');
         $this->assertEquals($ghost->page, 4);
@@ -43,7 +37,7 @@ class GhostPostsTest extends TestCase
     /** @test */
     public function it_returns_a_post_by_id()
     {
-        $ghost = new GhostPosts();
+        $ghost = Ghost::posts();
         $response = $ghost->find('605360bbce93e1003bd6ddd6');
 
         // Sets resource ID
@@ -60,7 +54,7 @@ class GhostPostsTest extends TestCase
     /** @test */
     public function it_returns_a_post_by_slug()
     {
-        $ghost = new GhostPosts();
+        $ghost = Ghost::posts();
         $response = $ghost->fromSlug('welcome');
 
         // Sets resource Slug
