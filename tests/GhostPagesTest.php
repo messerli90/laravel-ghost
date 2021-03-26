@@ -23,5 +23,4 @@ class GhostPagesTest extends TestCase
         $this->assertEquals('About this site', $response['pages'][0]['title']);
         $this->assertCount(4, $response['pages']);
     }
-
 }

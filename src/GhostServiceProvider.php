@@ -12,13 +12,12 @@ class GhostServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/ghost.php' => config_path('ghost.php'),
             ], 'config');
             $this->commands([
-                GhostCache::class
+                GhostCache::class,
             ]);
         }
     }
@@ -30,6 +29,7 @@ class GhostServiceProvider extends ServiceProvider
     {
         $this->app->bind(Ghost::class, function () {
             [$key, $domain, $version] = $this->getConfig();
+
             return new Ghost($key, $domain, $version);
         });
 

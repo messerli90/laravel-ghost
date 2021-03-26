@@ -50,9 +50,9 @@ class Ghost
     protected function buildEndpoint(): string
     {
         $endpoint = $this->resource;
-        if (!empty($this->resourceId)) {
+        if (! empty($this->resourceId)) {
             $endpoint .= "/{$this->resourceId}";
-        } elseif (!empty($this->resourceSlug)) {
+        } elseif (! empty($this->resourceSlug)) {
             $endpoint .= "/slug/{$this->resourceSlug}";
         }
 
@@ -68,7 +68,7 @@ class Ghost
             'formats' => $this->formats ?: null,
             'limit' => $this->limit ?: null,
             'page' => $this->page ?: null,
-            'order' => $this->order ?: null
+            'order' => $this->order ?: null,
         ];
 
         return http_build_query($params);
@@ -84,42 +84,49 @@ class Ghost
     public function limit($limit): Ghost
     {
         $this->limit = strval($limit);
+
         return $this;
     }
 
     public function setResource(string $resource): Ghost
     {
         $this->resource = $resource;
+
         return $this;
     }
 
     public function posts(): Ghost
     {
         $this->resource = 'posts';
+
         return $this;
     }
 
     public function authors(): Ghost
     {
         $this->resource = 'authors';
+
         return $this;
     }
 
     public function tags(): Ghost
     {
         $this->resource = 'tags';
+
         return $this;
     }
 
     public function pages(): Ghost
     {
         $this->resource = 'pages';
+
         return $this;
     }
 
     public function settings(): Ghost
     {
         $this->resource = 'settings';
+
         return $this;
     }
 
@@ -133,6 +140,7 @@ class Ghost
     public function find(string $id)
     {
         $this->resourceId = $id;
+
         return $this->get()['posts'][0];
     }
 
@@ -146,6 +154,7 @@ class Ghost
     public function fromSlug(string $slug): array
     {
         $this->resourceSlug = $slug;
+
         return $this->get()['posts'][0];
     }
 
@@ -161,6 +170,7 @@ class Ghost
     {
         $includes = collect($includes)->flatten()->toArray();
         $this->includes = implode(',', $includes);
+
         return $this;
     }
 
@@ -175,6 +185,7 @@ class Ghost
     {
         $fields = collect($fields)->flatten()->toArray();
         $this->fields = implode(',', $fields);
+
         return $this;
     }
 
@@ -189,18 +200,21 @@ class Ghost
     public function format(string $format): Ghost
     {
         $this->formats = $format;
+
         return $this;
     }
 
     public function page(int $page): Ghost
     {
         $this->page = strval($page);
+
         return $this;
     }
 
     public function orderBy(string $attr, string $order = "DESC"): Ghost
     {
         $this->order = $attr . "%20" . strtolower($order);
+
         return $this;
     }
 }

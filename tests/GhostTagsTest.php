@@ -23,5 +23,4 @@ class GhostTagsTest extends TestCase
         $this->assertEquals('Fables', $response['tags'][0]['name']);
         $this->assertCount(4, $response['tags']);
     }
-
 }

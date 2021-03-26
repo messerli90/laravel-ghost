@@ -26,7 +26,7 @@ class GhostCache extends Command
     public function handle(): void
     {
         $allowed_resources = ['posts', 'authors', 'pages', 'tags', 'settings', 'all'];
-        $resources = array_filter($this->argument('resource'), fn($r) => in_array($r, $allowed_resources));
+        $resources = array_filter($this->argument('resource'), fn ($r) => in_array($r, $allowed_resources));
 
         foreach ($resources as $resource) {
             if ($resource == 'settings') {

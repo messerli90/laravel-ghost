@@ -15,7 +15,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Messerli90\\Ghost\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Messerli90\\Ghost\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
 
         Http::fake([
@@ -59,7 +59,7 @@ class TestCase extends Orchestra
     protected function getPackageAliases($app)
     {
         return [
-            'Ghost' => Ghost::class
+            'Ghost' => Ghost::class,
         ];
     }
 }

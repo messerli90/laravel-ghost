@@ -2,7 +2,6 @@
 
 namespace Messerli90\Ghost\Tests;
 
-
 use Messerli90\Ghost\Facades\Ghost;
 
 class GhostTest extends TestCase

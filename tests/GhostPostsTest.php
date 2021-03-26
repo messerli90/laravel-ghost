@@ -6,7 +6,6 @@ use Messerli90\Ghost\Facades\Ghost;
 
 class GhostPostsTest extends TestCase
 {
-
     /** @test */
     public function it_sets_resource_to_posts()
     {
@@ -67,5 +66,4 @@ class GhostPostsTest extends TestCase
         // Returns only one post
         $this->assertArrayHasKey('slug', $response);
     }
-
 }

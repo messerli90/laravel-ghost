@@ -2,7 +2,6 @@
 
 namespace Messerli90\Ghost\Tests\Commands;
 
-
 use Illuminate\Support\Facades\Cache;
 use Messerli90\Ghost\Tests\TestCase;
 

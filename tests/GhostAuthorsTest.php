@@ -2,9 +2,7 @@
 
 namespace Messerli90\Ghost\Tests;
 
-use Illuminate\Support\Facades\Http;
 use Messerli90\Ghost\Facades\Ghost;
-use Messerli90\Ghost\GhostAuthors;
 
 class GhostAuthorsTest extends TestCase
 {
@@ -25,5 +23,4 @@ class GhostAuthorsTest extends TestCase
         $this->assertEquals('Abraham Lincoln', $response['authors'][0]['name']);
         $this->assertCount(7, $response['authors']);
     }
-
 }
