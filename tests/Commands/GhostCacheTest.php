@@ -44,4 +44,15 @@ class GhostCacheTest extends TestCase
         $this->assertTrue(array_key_exists('posts', Cache::get('ghost_posts')));
         $this->assertTrue(array_key_exists('authors', Cache::get('ghost_authors')));
     }
+
+    /** @test */
+    public function it_only_updates_settings_cache()
+    {
+        $this->artisan('ghost:cache settings')
+            ->expectsOutput('Settings cached.')
+            ->assertExitCode(0);
+
+        $this->assertTrue(Cache::has('ghost_settings'));
+        $this->assertTrue(array_key_exists('settings', Cache::get('ghost_settings')));
+    }
 }
