@@ -43,5 +43,12 @@ return [
          * Accepts int in seconds, or DateTime instance
          */
         'ttl' => 60 * 60,
+    ],
+
+    'errors' => [
+        /**
+         * Throw an error instead of returning an empty array
+         */
+        'throw_errors' => false
     ]
 ];

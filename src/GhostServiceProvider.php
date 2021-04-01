@@ -38,7 +38,7 @@ class GhostServiceProvider extends ServiceProvider
 
     protected function getConfig()
     {
-        //        throw_if(!file_exists(config_path('ghost.php')), );
+        // throw_if(!file_exists(config_path('ghost.php')), );
 
         $key = config('ghost.key');
         $domain = config('ghost.admin_domain');

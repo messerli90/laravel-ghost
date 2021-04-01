@@ -33,7 +33,13 @@ class Ghost
 
     public function get(): array
     {
-        return Http::get($this->make())->json();
+        $response = Http::get($this->make());
+
+        if (in_array($response->status(), [404, 422])) {
+            return ['posts' => []];
+        }
+
+        return $response->json();
     }
 
     public function make(): string
@@ -50,9 +56,9 @@ class Ghost
     protected function buildEndpoint(): string
     {
         $endpoint = $this->resource;
-        if (! empty($this->resourceId)) {
+        if (!empty($this->resourceId)) {
             $endpoint .= "/{$this->resourceId}";
-        } elseif (! empty($this->resourceSlug)) {
+        } elseif (!empty($this->resourceSlug)) {
             $endpoint .= "/slug/{$this->resourceSlug}";
         }
 
@@ -155,7 +161,7 @@ class Ghost
     {
         $this->resourceSlug = $slug;
 
-        return $this->get()['posts'][0];
+        return $this->get()['posts'][0] ?? [];
     }
 
     /**

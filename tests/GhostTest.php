@@ -108,4 +108,12 @@ class GhostTest extends TestCase
         $uri = $ghost->make();
         $this->assertEquals($expected, $uri);
     }
+
+    /** @test */
+    public function it_returns_empty_array_when_resource_not_found()
+    {
+        $notfound = Ghost::posts()->fromSlug('nonsense-slug');
+
+        $this->assertEquals([], $notfound);
+    }
 }

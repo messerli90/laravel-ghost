@@ -20,6 +20,7 @@ class TestCase extends Orchestra
 
         Http::fake([
             '*authors*' => Http::response(file_get_contents(__DIR__ . '/fixtures/authors.json'), 200),
+            '*posts/slug/nonsense*' => Http::response([], 404),
             '*posts*' => Http::response(file_get_contents(__DIR__ . '/fixtures/posts.json'), 200),
             '*tags*' => Http::response(file_get_contents(__DIR__ . '/fixtures/tags.json'), 200),
             '*pages*' => Http::response(file_get_contents(__DIR__ . '/fixtures/pages.json'), 200),
@@ -42,6 +43,7 @@ class TestCase extends Orchestra
         $app['config']->set('ghost.cache.cache_records', false);
         $app['config']->set('ghost.cache.cache_prefix', 'ghost_');
         $app['config']->set('ghost.cache.ttl', 3600);
+        $app['config']->set('ghost.errors.throw_errors', false);
 
         /*
         include_once __DIR__.'/../database/migrations/create_laravel_ghost_table.php.stub';
