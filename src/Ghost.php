@@ -56,9 +56,9 @@ class Ghost
     protected function buildEndpoint(): string
     {
         $endpoint = $this->resource;
-        if (!empty($this->resourceId)) {
+        if (! empty($this->resourceId)) {
             $endpoint .= "/{$this->resourceId}";
-        } elseif (!empty($this->resourceSlug)) {
+        } elseif (! empty($this->resourceSlug)) {
             $endpoint .= "/slug/{$this->resourceSlug}";
         }
 
