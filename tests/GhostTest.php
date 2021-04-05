@@ -129,7 +129,7 @@ class GhostTest extends TestCase
     /** @test */
     public function it_returns_empty_array_as_resource_and_meta_when_using_paginate_and_failing()
     {
-        $ghost =  Ghost::posts();
+        $ghost = Ghost::posts();
         $ghost->resourceSlug = 'nonsense';
         $posts = $ghost->paginate();
 
