@@ -127,6 +127,19 @@ class GhostTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_empty_array_as_resource_and_meta_when_using_paginate_and_failing()
+    {
+        $ghost =  Ghost::posts();
+        $ghost->resourceSlug = 'nonsense';
+        $posts = $ghost->paginate();
+
+        ray($posts);
+        $this->assertEquals($posts, ['posts' => []]);
+        $this->assertArrayHasKey('posts', $posts);
+        $this->assertArrayNotHasKey('meta', $posts);
+    }
+
+    /** @test */
     public function it_returns_correct_limit_with_paginated_results()
     {
         $ghost = Ghost::posts();

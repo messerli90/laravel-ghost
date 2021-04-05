@@ -1,6 +1,6 @@
 {
     "name": "messerli90/laravel-ghost",
-    "description": "Laravel wrapper for the Ghost blogging API",
+    "description": "Fluent Laravel wrapper for the Ghost Content API",
     "keywords": [
         "messerli90",
         "laravel-ghost"
@@ -17,8 +17,6 @@
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/http": "^7.0|^8.0",
-        "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^8.0",
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
@@ -31,8 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Messerli90\\Ghost\\": "src",
-            "Messerli90\\Ghost\\Database\\Factories\\": "database/factories"
+            "Messerli90\\Ghost\\": "src"
         }
     },
     "autoload-dev": {
