@@ -18,6 +18,17 @@ class GhostAuthorsTest extends TestCase
     {
         $response = Ghost::authors()->get();
 
+        $this->assertIsArray($response);
+        $this->assertArrayNotHasKey('authors', $response);
+        $this->assertEquals('Abraham Lincoln', $response[0]['name']);
+        $this->assertCount(7, $response);
+    }
+
+    /** @test */
+    public function it_gets_all_authors_paginated()
+    {
+        $response = Ghost::authors()->paginate();
+
         $this->assertArrayHasKey('authors', $response);
         $this->assertArrayHasKey('meta', $response);
         $this->assertEquals('Abraham Lincoln', $response['authors'][0]['name']);

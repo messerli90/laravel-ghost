@@ -9,8 +9,6 @@
 
 A fluent wrapper for the [Ghost Content API](https://ghost.org/docs/content-api/)
 
-🚧 Work in Progress 🚧
-
 ## Example
 
 ```php
@@ -18,8 +16,6 @@ $post = Ghost::posts()->with('authors')->fromSlug('welcome');
 
 $tags = Ghost::tags()->all();
 ```
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
 
@@ -99,9 +95,24 @@ $ghost->posts()->all();
 The API for `posts`, `authors`, `tags`, and `pages` is similiar and can be used with the following methods:
 
 ```php
-// All posts (or other resource)
+// All resources returned as an array
 Ghost::posts()->all();
 Ghost::authors()->all();
+Ghost::tags()->all();
+Ghost::pages()->all();
+
+// Retrieve a single resource by slug
+Ghost::posts()->bySlug('welcome');
+
+// Retrieve a single resource by id
+Ghost::posts()->find('605360bbce93e1003bd6ddd6');
+
+// Get full response from Ghost Content API including meta & pagination
+Ghost::posts()->paginate();
+$response = Ghost::posts()->paginate(15);
+
+$posts = $response['posts'];
+$meta = $response['meta'];
 ```
 
 Build your request
@@ -116,9 +127,23 @@ Ghost::posts()
     ->get();
 ```
 
-## Experimental
+## Caching
 
-#### Resource Caching
+It is recommended you cache your returned resources when serving from your Laravel app.
+
+For example, a possible `BlogController@index` could look like:
+
+```php
+public function index()
+{
+    $posts = Cache::rememberForever('posts',
+        fn() => Ghost::posts()->with('authors', 'tags')->all()
+    );
+    return view('blog.index', compact('posts'));
+}
+```
+
+#### Automatic Resource Caching (Experimental & not in stable release)
 
 Automatically cache returned records for a defined time.
 
@@ -129,6 +154,10 @@ Includes `ghost:cache` artisan command that can be scheduled to periodically rep
 ```bash
 composer test
 ```
+
+## Roadmap
+- [ ] Caching
+- [ ] Ghost Content Filter 
 
 ## Changelog
 

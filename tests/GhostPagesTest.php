@@ -14,9 +14,20 @@ class GhostPagesTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_all_authors()
+    public function it_gets_all_pages()
     {
         $response = Ghost::pages()->all();
+
+        $this->assertIsArray($response);
+        $this->assertArrayNotHasKey('pages', $response);
+        $this->assertEquals('About this site', $response[0]['title']);
+        $this->assertCount(4, $response);
+    }
+
+    /** @test */
+    public function it_gets_all_pages_paginated()
+    {
+        $response = Ghost::pages()->paginate();
 
         $this->assertArrayHasKey('pages', $response);
         $this->assertArrayHasKey('meta', $response);

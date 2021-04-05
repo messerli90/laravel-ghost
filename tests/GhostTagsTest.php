@@ -14,9 +14,20 @@ class GhostTagsTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_all_authors()
+    public function it_gets_all_tags()
     {
         $response = Ghost::tags()->all();
+
+        $this->assertIsArray($response);
+        $this->assertArrayNotHasKey('tags', $response);
+        $this->assertEquals('Fables', $response[0]['name']);
+        $this->assertCount(4, $response);
+    }
+
+    /** @test */
+    public function it_gets_all_tags_paginate()
+    {
+        $response = Ghost::tags()->paginate();
 
         $this->assertArrayHasKey('tags', $response);
         $this->assertArrayHasKey('meta', $response);

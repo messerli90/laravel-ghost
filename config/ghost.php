@@ -23,6 +23,7 @@ return [
     'key' => env('GHOST_API_KEY', ''),
 
     /**
+     * Experimental
      * Optionally, cache records when they are returned.
      */
     'cache' => [
@@ -44,11 +45,4 @@ return [
          */
         'ttl' => 60 * 60,
     ],
-
-    'errors' => [
-        /**
-         * Throw an error instead of returning an empty array
-         */
-        'throw_errors' => false
-    ]
 ];

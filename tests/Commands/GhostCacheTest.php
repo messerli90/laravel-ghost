@@ -27,7 +27,6 @@ class GhostCacheTest extends TestCase
             ->assertExitCode(0);
 
         $this->assertTrue(Cache::has('ghost_posts'));
-        $this->assertTrue(array_key_exists('posts', Cache::get('ghost_posts')));
     }
 
     /** @test */
@@ -41,8 +40,6 @@ class GhostCacheTest extends TestCase
         $this->assertTrue(Cache::has('ghost_posts'));
         $this->assertTrue(Cache::has('ghost_authors'));
         $this->assertFalse(Cache::has('ghost_tags'));
-        $this->assertTrue(array_key_exists('posts', Cache::get('ghost_posts')));
-        $this->assertTrue(array_key_exists('authors', Cache::get('ghost_authors')));
     }
 
     /** @test */
@@ -53,6 +50,5 @@ class GhostCacheTest extends TestCase
             ->assertExitCode(0);
 
         $this->assertTrue(Cache::has('ghost_settings'));
-        $this->assertTrue(array_key_exists('settings', Cache::get('ghost_settings')));
     }
 }

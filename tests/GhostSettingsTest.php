@@ -18,8 +18,7 @@ class GhostSettingsTest extends TestCase
     {
         $response = Ghost::settings()->get();
 
-        $this->assertArrayHasKey('settings', $response);
-        $this->assertArrayHasKey('meta', $response);
-        $this->assertEquals('Ghost', $response['settings']['title']);
+        $this->assertIsArray($response);
+        $this->assertEquals('Ghost', $response['title']);
     }
 }

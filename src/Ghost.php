@@ -39,6 +39,21 @@ class Ghost
             return ['posts' => []];
         }
 
+        return $response->json($this->resource);
+    }
+
+    public function paginate($limit = null): array
+    {
+        if (isset($limit)) {
+            $this->limit = $limit;
+        }
+
+        $response = Http::get($this->make());
+
+        if (in_array($response->status(), [404, 422])) {
+            return ['posts' => []];
+        }
+
         return $response->json();
     }
 
@@ -147,7 +162,7 @@ class Ghost
     {
         $this->resourceId = $id;
 
-        return $this->get()['posts'][0];
+        return $this->get()[0];
     }
 
     /**
@@ -161,7 +176,7 @@ class Ghost
     {
         $this->resourceSlug = $slug;
 
-        return $this->get()['posts'][0] ?? [];
+        return $this->get()[0] ?? [];
     }
 
     /**

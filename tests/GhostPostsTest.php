@@ -18,6 +18,17 @@ class GhostPostsTest extends TestCase
     {
         $response = Ghost::posts()->all();
 
+        $this->assertIsArray($response);
+        $this->assertArrayNotHasKey('posts', $response);
+        $this->assertEquals('welcome', $response[0]['slug']);
+        $this->assertCount(3, $response);
+    }
+
+    /** @test */
+    public function it_gets_all_posts_paginated()
+    {
+        $response = Ghost::posts()->paginate();
+
         $this->assertArrayHasKey('posts', $response);
         $this->assertArrayHasKey('meta', $response);
         $this->assertEquals('welcome', $response['posts'][0]['slug']);
