@@ -3,7 +3,9 @@
     "description": "Fluent Laravel wrapper for the Ghost Content API",
     "keywords": [
         "messerli90",
-        "laravel-ghost"
+        "laravel",
+        "ghost",
+        "blog"
     ],
     "homepage": "https://github.com/messerli90/laravel-ghost",
     "license": "MIT",
